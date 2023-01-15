@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class headingWidget extends StatelessWidget {
-  const headingWidget({
-    Key? key,
-  }) : super(key: key);
+import '../../../utils/colors.dart';
+
+class HeadingWidget extends StatelessWidget {
+  const HeadingWidget({Key? key, this.totalCount}) : super(key: key);
+  final String? totalCount;
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +14,11 @@ class headingWidget extends StatelessWidget {
         RichText(
           text: const TextSpan(
             text: "Hello ",
-            style: TextStyle(color: Colors.black54, fontSize: 18),
+            style: TextStyle(color: kDarkBlue, fontSize: 18),
             children: [
               TextSpan(
                 text: "BRUNO",
-                style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                style: TextStyle(color: kDarkBlue, fontWeight: FontWeight.bold),
               ),
               TextSpan(
                 text: ", welcome back!",
@@ -31,17 +31,14 @@ class headingWidget extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text(
+          children:  [
+            const Text(
               "Flutter Repository",
-              style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
             ),
             Text(
-              "View All",
-              style: TextStyle(color: Colors.grey),
+              totalCount!,
+              style: const TextStyle(color: kDarkBlue),
             ),
           ],
         ),

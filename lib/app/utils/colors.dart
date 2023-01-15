@@ -28,6 +28,11 @@ const Color primaryColor = Color(0xffFDFDFD);
 const Color blue0C6395 = Color(0xff0C6395);
 const Color blueDEF4FE = Color(0xffDEF4FE);
 const Color green016E69 = Color(0xff016E69);
+const kLightBlue = Color(0xffEBF6FF);
+const kDarkBlue = Color(0xff369FFF);
+const kGreen = Color(0xff8AC53E);
+const kOrange = Color(0xffFF993A);
+const kYellow = Color(0xffFFD143);
 
 //for button Status
 const Color blue0275d8 = Color(0xff0275d8);

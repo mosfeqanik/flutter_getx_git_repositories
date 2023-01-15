@@ -1,9 +1,12 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-
 import '../../../utils/network_image_strings.dart';
 import '../components/Headingwidget.dart';
+import '../components/ListTileWidget.dart';
 import '../components/side_menu.dart';
 import '../controllers/home_controller.dart';
 
@@ -12,7 +15,9 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.loadGitDetailsData();
     return Scaffold(
+      backgroundColor: const Color(0xffffffff),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -43,83 +48,43 @@ class HomeView extends GetView<HomeController> {
       drawer: const SideMenu(),
       body: Column(
         children: [
-      Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: const headingWidget(),
-      ),
-      Container(
-        height: 530,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: GridView.builder(
-            itemCount: 8,
-            // physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 16 / 4, crossAxisCount: 1, mainAxisSpacing: 20),
-            itemBuilder: (context, index) {
-              return Container(
-                // color: Colors.grey,
-                decoration: BoxDecoration(
-                    color: const Color(0xffF7F7F7),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Row(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: Colors.lightGreen,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: 55,
-                            width: 55,
-                            child: Icon(Icons.ice_skating),
-                          )
-                        ],
-                      ),
-                      const SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "planing[index].heading",
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontSize: MediaQuery.of(context).size.width * 0.035,
-                                fontWeight: FontWeight.bold,
-                                overflow: TextOverflow.ellipsis),
-                          ),
-                          Text(
-                            "laning[index].subHeading",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: MediaQuery.of(context).size.width * 0.03,
-                            ),
-                          )
-                        ],
-                      ),
-                      const Spacer(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.more_vert,
-                            color: Colors.grey,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              );
-            }),
-      )
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child:  HeadingWidget(
+                totalCount:
+                    controller.getGitRepositories.value.totalCount.toString()),
+          ),
+          gitRepositoryListView()
         ],
       ),
+    );
+  }
+
+  Container gitRepositoryListView() {
+    return Container(
+      height: 550.h,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+      child: GridView.builder(
+          itemCount: controller.getGitRepositories.value.items?.length,
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 16 / 4, crossAxisCount: 1, mainAxisSpacing: 20),
+          itemBuilder: (context, index) {
+            return ListTileWidget(
+              imgUrl: controller
+                  .getGitRepositories.value.items![index].owner?.avatarUrl,
+              repositoryName:
+                  controller.getGitRepositories.value.items![index].name!,
+              stargazersCount: controller
+                  .getGitRepositories.value.items![index].stargazersCount
+                  .toString(),
+              ownersName: controller
+                  .getGitRepositories.value.items![index].owner?.login,
+              watchers: controller
+                  .getGitRepositories.value.items![index].watchersCount
+                  .toString(),
+            );
+          }),
     );
   }
 }
