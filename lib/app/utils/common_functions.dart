@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'colors.dart';
-
+//commonly used Functions
 Future<String> chooseDate({required BuildContext context}) async {
   bool disableDate(DateTime day) {
     if ((day.isAfter(DateTime.now().subtract(const Duration(days: 1)))) &&
