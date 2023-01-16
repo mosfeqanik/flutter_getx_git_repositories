@@ -1,5 +1,5 @@
 import 'package:get_storage/get_storage.dart';
-
+//Getstorage
 mixin CacheManager {
   final box = GetStorage();
 
