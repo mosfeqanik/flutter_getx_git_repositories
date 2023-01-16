@@ -1,24 +1,42 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 import 'sizes.dart';
 
-class TextStyles {
+//all used Text Style
+class ThemeTextStyles {
   static final TextStyle superSmall07 = TextStyle(
     fontSize: superSmall,
     fontWeight: FontWeight.w400,
     fontFamily: 'Lato',
   );
+  static const TextStyle HomeRichTextStyle =
+      TextStyle(color: kDarkBlue, fontWeight: FontWeight.bold);
+  static final TextStyle HomeRichText2Style =
+      TextStyle(color: kDarkBlue, fontSize: 18.sp);
+  static final TextStyle listHeadingTextStyle =
+      TextStyle(fontSize: 26.sp, fontWeight: FontWeight.bold);
+  static final TextStyle TotalTextStyle = const TextStyle(color: kDarkBlue);
 
   static final TextStyle superSmall07Blue = superSmall07.copyWith(
     color: blue0C6395,
   );
-
-  static final TextStyle superSmall07WhiteBold = superSmall07.copyWith(
-    color: white,
-    fontWeight: FontWeight.bold,
+  static const TextStyle RespositoryNameTextStyle =
+      TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w800);
+  static const TextStyle RespositoryDescriptionTextStyle = TextStyle(
+      color: Colors.black45, fontSize: 16, fontWeight: FontWeight.w800);
+  static const TextStyle HeadingTextStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 15,
   );
+  static const TextStyle DateTextStyle = TextStyle(
+      color: Colors.black45, fontSize: 16, fontWeight: FontWeight.w600);
+
+  static final TextStyle DetailsPatTextStyle = TextStyle(
+      color: Colors.black,
+      fontSize: 23,
+      fontWeight: FontWeight.w800);
 
   // Extra Small
   static final TextStyle extraExtraSmall09 = TextStyle(
@@ -51,8 +69,8 @@ class TextStyles {
     fontWeight: FontWeight.w800,
     fontSize: 20,
     fontFamily: 'Kalpurush',
-
   );
+
   // Extra Small
   static final TextStyle extraSmall12 = TextStyle(
     fontSize: extraSmall,
@@ -87,7 +105,6 @@ class TextStyles {
     color: blue0C6395,
     fontWeight: FontWeight.bold,
     fontFamily: 'Kalpurush',
-
   );
 
   static final small14GreenBold = small14.copyWith(
