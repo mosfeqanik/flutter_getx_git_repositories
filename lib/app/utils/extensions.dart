@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-
+//for responsive usage by get
 extension PercentSize on double {
   double get hp => (Get.height * (this / 100));
   double get wp => (Get.width * (this / 100));
