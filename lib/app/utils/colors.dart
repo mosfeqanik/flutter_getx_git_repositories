@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//All Colors
 // Theme Color
 Map<int, Color> customWhiteMap = {
   50: const Color.fromRGBO(253, 253, 253, .1),
