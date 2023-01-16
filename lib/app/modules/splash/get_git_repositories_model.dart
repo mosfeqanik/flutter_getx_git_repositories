@@ -1,3 +1,5 @@
+
+//model class https://api.github.com/search/repositories?q={Flutter}{&page,per_page,sort,order}
 class GetGitRepositories {
   int? totalCount;
   bool? incompleteResults;
