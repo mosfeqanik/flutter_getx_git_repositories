@@ -1,3 +1,4 @@
+//All network Images
 class NetworkImageStrings {
   NetworkImageStrings._();
 
