@@ -1,5 +1,5 @@
 import 'extensions.dart';
-
+//text Size
 final superSmall = 7.0.sp;
 final extraExtraSmall = 9.0.sp;
 final extraSmall = 12.0.sp;
