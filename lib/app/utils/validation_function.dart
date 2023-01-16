@@ -1,4 +1,4 @@
-
+//All validation function
 
 String? validCheckNID(String value) {
   if (value.isEmpty) {
