@@ -19,13 +19,12 @@ class HomeController extends GetxController with CacheManager {
   }
   sortByDate(){
     itemsList.sort((a, b){
-      return DateTime.parse(a.updatedAt!).compareTo(DateTime.parse(b.updatedAt!));
+      return DateTime.parse(b.updatedAt!).compareTo(DateTime.parse(a.updatedAt!));
     });
   }
-
   sortByStar(){
     itemsList.sort((a, b){
-      return a.stargazersCount!.compareTo(b.stargazersCount!);
+      return b.stargazersCount!.compareTo(a.stargazersCount!);
     });
   }
   
