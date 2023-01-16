@@ -9,9 +9,9 @@ part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
-
+  //for initial start page
   static const INITIAL = Routes.SPLASH;
-
+  //All routes of module pages
   static final routes = [
     GetPage(
       name: _Paths.HOME,
