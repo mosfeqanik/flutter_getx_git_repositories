@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/colors.dart';
+import '../../../utils/AllStrings.dart';
+import '../../../utils/ThemeTextStyles.dart';
 
 class HeadingWidget extends StatelessWidget {
   const HeadingWidget({Key? key, this.totalCount}) : super(key: key);
@@ -11,38 +13,46 @@ class HeadingWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: const TextSpan(
-            text: "Hello ",
-            style: TextStyle(color: kDarkBlue, fontSize: 18),
-            children: [
-              TextSpan(
-                text: "BRUNO",
-                style: TextStyle(color: kDarkBlue, fontWeight: FontWeight.bold),
-              ),
-              TextSpan(
-                text: ", welcome back!",
-              ),
-            ],
+        GreetingsRichText(),
+         SizedBox(
+          height: 10.h,
+        ),
+        listHeadingDetails(),
+      ],
+    );
+  }
+
+  Row listHeadingDetails() {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children:  [
+           Text(
+             AllStrings.listHeadingName,
+            style: ThemeTextStyles.listHeadingTextStyle,
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children:  [
-            const Text(
-              "Flutter Repository",
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          Text(
+            totalCount!,
+            style:  ThemeTextStyles.TotalTextStyle,
+          ),
+        ],
+      );
+  }
+
+  RichText GreetingsRichText() {
+    return RichText(
+        text:  TextSpan(
+          text: AllStrings.HelloRichText,
+          style: ThemeTextStyles.HomeRichText2Style,
+          children: const [
+            TextSpan(
+              text:AllStrings.AdminText,
+              style: ThemeTextStyles.HomeRichTextStyle,
             ),
-            Text(
-              totalCount!,
-              style: const TextStyle(color: kDarkBlue),
+            TextSpan(
+              text: AllStrings.WelcomeBack,
             ),
           ],
         ),
-      ],
-    );
+      );
   }
 }
