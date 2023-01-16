@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_git_repositories/app/modules/home/views/repo_detail_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -50,7 +49,7 @@ class HomeView extends GetView<HomeController> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child:  HeadingWidget(
+            child: HeadingWidget(
                 totalCount:
                     controller.getGitRepositories.value.totalCount.toString()),
           ),
@@ -70,19 +69,26 @@ class HomeView extends GetView<HomeController> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               childAspectRatio: 16 / 4, crossAxisCount: 1, mainAxisSpacing: 20),
           itemBuilder: (context, index) {
-            return ListTileWidget(
-              imgUrl: controller
-                  .getGitRepositories.value.items![index].owner?.avatarUrl,
-              repositoryName:
-                  controller.getGitRepositories.value.items![index].name!,
-              stargazersCount: controller
-                  .getGitRepositories.value.items![index].stargazersCount
-                  .toString(),
-              ownersName: controller
-                  .getGitRepositories.value.items![index].owner?.login,
-              watchers: controller
-                  .getGitRepositories.value.items![index].watchersCount
-                  .toString(),
+            return GestureDetector(
+              onTap: () {
+                Get.to(() =>RepoDetailView(
+                  items: controller.getGitRepositories.value.items![index],
+                ));
+              },
+              child: ListTileWidget(
+                imgUrl: controller
+                    .getGitRepositories.value.items![index].owner?.avatarUrl,
+                repositoryName:
+                    controller.getGitRepositories.value.items![index].name!,
+                stargazersCount: controller
+                    .getGitRepositories.value.items![index].stargazersCount
+                    .toString(),
+                ownersName: controller
+                    .getGitRepositories.value.items![index].owner?.login,
+                watchers: controller
+                    .getGitRepositories.value.items![index].watchersCount
+                    .toString(),
+              ),
             );
           }),
     );
