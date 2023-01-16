@@ -5,9 +5,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
+import 'app/utils/AllStrings.dart';
 
 void main() async{
+  //Getstorage initialize
   await GetStorage.init();
+  //widget root initialize
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
       const GetRepositories()
@@ -15,14 +18,14 @@ void main() async{
 }
 class GetRepositories extends StatelessWidget {
   const GetRepositories({Key? key}) : super(key: key);
-
+  //this widget is the root of the app
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: (_, c) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "Application",
+          title: AllStrings.AppTittle,
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
         );
