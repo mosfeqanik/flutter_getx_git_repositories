@@ -11,4 +11,6 @@ class AllStrings {
   static const String RepositoryDescription =  "Repository Description";
   static const String RepositoryName =  "Repository Name";
   static const String Information =  "Information";
+  static const String SortbyDate =  "Sort by Date";
+  static const String SortbyStar =  "Sort by Star";
 }
