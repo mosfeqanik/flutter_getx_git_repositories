@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_git_repositories/app/modules/home/views/repo_detail_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import '../../../utils/network_image_strings.dart';
+
 import '../components/Headingwidget.dart';
 import '../components/ListTileWidget.dart';
 import '../components/side_menu.dart';
@@ -38,8 +40,10 @@ class HomeView extends GetView<HomeController> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 5, right: 16, bottom: 5),
-            child: const CircleAvatar(
-              backgroundImage: NetworkImage(NetworkImageStrings.userImage),
+            child:const Image(
+              image: CachedNetworkImageProvider(
+                NetworkImageStrings.userImage,
+              ),
             ),
           )
         ],
@@ -53,44 +57,47 @@ class HomeView extends GetView<HomeController> {
                 totalCount:
                     controller.getGitRepositories.value.totalCount.toString()),
           ),
-          gitRepositoryListView()
+          listViewContainer()
         ],
       ),
     );
   }
 
-  Container gitRepositoryListView() {
+  Container listViewContainer() {
     return Container(
-      height: 550.h,
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-      child: GridView.builder(
-          itemCount: controller.getGitRepositories.value.items?.length,
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 16 / 4, crossAxisCount: 1, mainAxisSpacing: 20),
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Get.to(() =>RepoDetailView(
-                  items: controller.getGitRepositories.value.items![index],
-                ));
-              },
-              child: ListTileWidget(
-                imgUrl: controller
-                    .getGitRepositories.value.items![index].owner?.avatarUrl,
-                repositoryName:
-                    controller.getGitRepositories.value.items![index].name!,
-                stargazersCount: controller
-                    .getGitRepositories.value.items![index].stargazersCount
-                    .toString(),
-                ownersName: controller
-                    .getGitRepositories.value.items![index].owner?.login,
-                watchers: controller
-                    .getGitRepositories.value.items![index].watchersCount
-                    .toString(),
-              ),
-            );
-          }),
-    );
+          height: 550.h,
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+          child: GridView.builder(
+              itemCount: controller.getGitRepositories.value.items?.length,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 16 / 4,
+                  crossAxisCount: 1,
+                  mainAxisSpacing: 20),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(() => RepoDetailView(
+                          items: controller
+                              .getGitRepositories.value.items![index],
+                        ));
+                  },
+                  child: ListTileWidget(
+                    imgUrl: controller.getGitRepositories.value.items![index]
+                        .owner?.avatarUrl,
+                    repositoryName: controller
+                        .getGitRepositories.value.items![index].name!,
+                    stargazersCount: controller.getGitRepositories.value
+                        .items![index].stargazersCount
+                        .toString(),
+                    ownersName: controller
+                        .getGitRepositories.value.items![index].owner?.login,
+                    watchers: controller
+                        .getGitRepositories.value.items![index].watchersCount
+                        .toString(),
+                  ),
+                );
+              }),
+        );
   }
 }
