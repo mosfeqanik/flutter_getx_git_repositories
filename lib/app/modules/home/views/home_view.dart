@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_git_repositories/app/modules/home/views/repo_detail_view.dart';
 import 'package:flutter_getx_git_repositories/app/utils/AllStrings.dart';
@@ -12,7 +11,8 @@ import '../components/side_menu.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
+  HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class HomeView extends GetView<HomeController> {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: HeadingWidget(
                 totalCount:
-                controller.getGitRepositories.value.totalCount.toString()),
+                    controller.getGitRepositories.value.totalCount.toString()),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -78,36 +78,37 @@ class HomeView extends GetView<HomeController> {
       height: 500.h,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       child: Obx(() {
-        return GridView.builder(
-            itemCount: controller.itemsList.length,
+        return ListView.builder(
+            itemCount: controller.itemsListsLength.value,
+            controller: controller.scrollController,
             shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 16 / 4,
-                crossAxisCount: 1,
-                mainAxisSpacing: 20),
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Get.to(() =>
-                      RepoDetailView(
-                        items:
-                        controller.itemsList[index],
-                      ));
-                },
-                child: Obx(() {
-                  return ListTileWidget(
-                    imgUrl: controller.itemsList[index].owner
-                        ?.avatarUrl,
-                    repositoryName:
-                    controller.itemsList[index].name!,
-                    stargazersCount: controller.itemsList[index].stargazersCount
-                        .toString(),
-                    ownersName: controller.itemsList[index].owner?.login,
-                    watchers: controller.itemsList[index].watchersCount
-                        .toString(),
-                  );
-                }),
-              );
+              if (index < controller.itemsListsLength.value) {
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(() => RepoDetailView(
+                          items: controller.itemsList[index],
+                        ));
+                  },
+                  child: Obx(() => ListTileWidget(
+                        imgUrl: controller.itemsList[index].owner?.avatarUrl,
+                        repositoryName: controller.itemsList[index].name!,
+                        stargazersCount: controller
+                            .itemsList[index].stargazersCount
+                            .toString(),
+                        ownersName: controller.itemsList[index].owner?.login,
+                        watchers: controller.itemsList[index].watchersCount
+                            .toString(),
+                      )),
+                );
+              } else {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 32),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
             });
       }),
     );
