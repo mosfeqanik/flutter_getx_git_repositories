@@ -24,8 +24,7 @@ class HomeController extends GetxController with CacheManager {
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==
           scrollController.offset) {
-        if (itemsList.length <= itemsListsLength.value) {
-          fetchdataBypagination();
+        if (itemsList.length <= 30) {
           Future.delayed(const Duration(seconds: 5), fetchdataBypagination);
         }
       }
