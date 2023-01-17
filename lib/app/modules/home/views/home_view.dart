@@ -79,11 +79,11 @@ class HomeView extends GetView<HomeController> {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       child: Obx(() {
         return ListView.builder(
-            itemCount: controller.itemsListsLength.value,
+            itemCount: controller.ExampleitemsListsLength.value,
             controller: controller.scrollController,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              if (index < controller.itemsListsLength.value) {
+              if (index < controller.ExampleitemsListsLength.value) {
                 return GestureDetector(
                   onTap: () {
                     Get.to(() => RepoDetailView(
