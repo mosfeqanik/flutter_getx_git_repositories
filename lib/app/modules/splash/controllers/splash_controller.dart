@@ -7,6 +7,7 @@ import '../providers/splash_provider.dart';
 class SplashController extends GetxController with CacheManager {
   GetGitRepositoriesProvider provider = GetGitRepositoriesProvider();
   var isRoutetoHome = true.obs;
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -15,7 +16,8 @@ class SplashController extends GetxController with CacheManager {
     super.onInit();
   }
 
-   Future<bool> getGitRepositories() async {
+  getGitRepositories() async {
+    isLoading.value = true;
     //get saved git api response data
     var gitData = getGitDetailsData();
     //get saved git api response data null check and save Getstorage
@@ -23,9 +25,9 @@ class SplashController extends GetxController with CacheManager {
       final String responseBody = await provider.getGitRepositories();
       saveGitDetailsData(GitDetails: responseBody);
     }
-    if(isRoutetoHome.value){
+    if (isRoutetoHome.value) {
       Get.offNamed(Routes.HOME);
     }
-    return true;
+    isLoading.value = false;
   }
 }
