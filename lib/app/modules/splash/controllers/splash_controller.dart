@@ -15,7 +15,7 @@ class SplashController extends GetxController with CacheManager {
     super.onInit();
   }
 
-  getGitRepositories() async {
+   Future<bool> getGitRepositories() async {
     //get saved git api response data
     var gitData = getGitDetailsData();
     //get saved git api response data null check and save Getstorage
@@ -26,5 +26,6 @@ class SplashController extends GetxController with CacheManager {
     if(isRoutetoHome.value){
       Get.offNamed(Routes.HOME);
     }
+    return true;
   }
 }
