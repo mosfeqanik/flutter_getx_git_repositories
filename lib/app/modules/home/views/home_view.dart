@@ -16,7 +16,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.loadGitDetailsData();
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
       appBar: AppBar(
@@ -83,7 +82,7 @@ class HomeView extends GetView<HomeController> {
             controller: controller.scrollController,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              if (index < controller.ExampleitemsListsLength.value) {
+              if (index < controller.itemsList.length) {
                 return GestureDetector(
                   onTap: () {
                     Get.to(() => RepoDetailView(
@@ -101,13 +100,15 @@ class HomeView extends GetView<HomeController> {
                             .toString(),
                       )),
                 );
-              } else {
+              } else if(controller.isLoading.value){
                 return const Padding(
                   padding: EdgeInsets.symmetric(vertical: 32),
                   child: Center(
                     child: CircularProgressIndicator(),
                   ),
                 );
+              }else{
+                return Container();
               }
             });
       }),

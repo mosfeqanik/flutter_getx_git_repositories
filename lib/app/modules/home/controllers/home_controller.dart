@@ -15,6 +15,7 @@ class HomeController extends GetxController with CacheManager {
   var getGitRepositories = GetGitRepositories().obs;
   var itemsList = <Items>[].obs;
   var ExampleitemsListsLength = 10.obs;
+  var isLoading = false.obs;
 
   final scrollController = ScrollController();
 
@@ -25,7 +26,9 @@ class HomeController extends GetxController with CacheManager {
       if (scrollController.position.maxScrollExtent ==
           scrollController.offset) {
         if (ExampleitemsListsLength.value < itemsList.length) {
+          isLoading.value = true;
           Future.delayed(const Duration(seconds: 3), fetchdataBypagination);
+          isLoading.value = false;
         }
       }
     });
