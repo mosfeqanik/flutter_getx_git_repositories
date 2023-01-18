@@ -44,11 +44,11 @@ class RepoDetailView extends GetView<HomeController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RespositoryIntro(),
+                  repositoryIntro(),
                   SizedBox(
                     height: 20.h,
                   ),
-                  RepositoryDescription(),
+                  repositoryDescription(),
                   const SizedBox(
                     height: 20,
                   ),
@@ -56,14 +56,14 @@ class RepoDetailView extends GetView<HomeController> {
                 ],
               ),
             ),
-            bottompart(context)
+            bottomPart(context)
           ],
         ),
       ),
     );
   }
 
-  SizedBox bottompart(BuildContext context) {
+  SizedBox bottomPart(BuildContext context) {
     return SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Padding(
@@ -99,7 +99,7 @@ class RepoDetailView extends GetView<HomeController> {
           AllStrings.Information,
           style: ThemeTextStyles.RespositoryNameTextStyle,
         ),
-        Text("UpdatedAt", style: ThemeTextStyles.HeadingTextStyle),
+        const Text("UpdatedAt", style: ThemeTextStyles.HeadingTextStyle),
         const SizedBox(
           height: 10,
         ),
@@ -117,7 +117,7 @@ class RepoDetailView extends GetView<HomeController> {
     );
   }
 
-  Column RepositoryDescription() {
+  Column repositoryDescription() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +144,7 @@ class RepoDetailView extends GetView<HomeController> {
     );
   }
 
-  Row RespositoryIntro() {
+  Row repositoryIntro() {
     return Row(
       children: [
         const Text(
