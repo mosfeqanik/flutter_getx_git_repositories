@@ -106,7 +106,7 @@ class RepoDetailView extends GetView<HomeController> {
         Row(
           children: [
             Text(
-              controller.dateformaterFuncDate(
+              controller.commonfunc.dateformaterFuncDate(
                   inputString: items!.updatedAt ?? ""),
               overflow: TextOverflow.ellipsis,
               style: ThemeTextStyles.DateTextStyle,

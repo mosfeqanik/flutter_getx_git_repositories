@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -5,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../data/services/cache_manager.dart';
+import '../../../utils/common_functions.dart';
+import '../../splash/controllers/splash_controller.dart';
 import '../../splash/get_git_repositories_model.dart';
 
 class HomeController extends GetxController with CacheManager {
@@ -17,6 +20,7 @@ class HomeController extends GetxController with CacheManager {
   var ExampleitemsListsLength = 10.obs;
   var isLoading = false.obs;
 
+  CommonFunction commonfunc =  CommonFunction();
   final scrollController = ScrollController();
 
   @override
@@ -33,10 +37,22 @@ class HomeController extends GetxController with CacheManager {
       }
     });
     super.onInit();
+    setUpTimedFetch();
   }
 
+  //fetch data with pagination
   fetchdataBypagination() {
     ExampleitemsListsLength.value = ExampleitemsListsLength.value + 10;
+  }
+
+  //4. The required data can be refreshed from the API no more
+  // frequently than once every 30 minutes
+  setUpTimedFetch() {
+    Timer.periodic(Duration(milliseconds: 2000), (timer) {
+      Get.find<SplashController>().isRoutetoHome.value = false;
+      Get.find<SplashController>().getGitRepositories();
+      IsgetGitDataSortBy.value="";
+    });
   }
 
   @override
@@ -79,14 +95,6 @@ class HomeController extends GetxController with CacheManager {
     });
     String jsonItemList = jsonEncode(itemsList);
     saveGitDataSortByStar(GitDetails: jsonItemList);
-  }
-
-  // dateformatter
-  String dateformaterFuncDate({required String inputString}) {
-    final DateTime inputDateTime = DateTime.parse(inputString);
-    final DateFormat formatter = DateFormat('MMMM dd yyyy hh:mm:ss aaa');
-    final String formatted = formatter.format(inputDateTime);
-    return formatted;
   }
 
   //convert json string to List of Items
