@@ -176,11 +176,11 @@ https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/apk/app-
     └── main.dart
 ```
 
-<img align="left" src="screenshot_and_screensrecoad/login.jpg"></img>
-<img align="left" src="screenshot_and_screensrecoad/1.jpg"></img>
-<img align="left" src="screenshot_and_screensrecoad/detail.jpg"></img>
-<img align="left" src="screenshot_and_screensrecoad/sort_by_date.jpg"></img>
-<img align="left" src="screenshot_and_screensrecoad/sort_by_star.jpg"></img>
+<img align="left"  width="360px" src="screenshot_and_screensrecoad/login.jpg"></img>
+<img align="left" width="360px"  src="screenshot_and_screensrecoad/1.jpg"></img>
+<img align="left"  width="360px" src="screenshot_and_screensrecoad/detail.jpg"></img>
+<img align="left" width="360px"  src="screenshot_and_screensrecoad/sort_by_date.jpg"></img>
+<img align="left"  width="360px"  src="screenshot_and_screensrecoad/sort_by_star.jpg"></img>
 
 <img width="360px" src="https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/main/screenshot_and_screensrecoad/1.gif"  alt="Eccomerce Screenplay">;
 <img width="360px" src="https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/main/screenshot_and_screensrecoad/2.gif"  alt="Eccomerce Screenplay">;
