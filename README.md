@@ -108,6 +108,9 @@ https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/lib/app/
 
 used packages
 
+ #getx StateManagement
+ 
+ get: 4.6.5
  #getx storage chache management
  
  
@@ -133,6 +136,8 @@ used packages
  
  cached_network_image: ^3.2.3
  
+ APK link
+https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/apk/app-release.apk
  
 <img align="left" src="screenshot_and_screensrecoad/file__structure.jpg"></img>
 
@@ -170,5 +175,12 @@ used packages
     ├── generated_plugin_registrant.dart
     └── main.dart
 ```
-<img align="left" src="screenshot_and_screensrecoad/1.mp4"></img>
 
+<img align="left" src="screenshot_and_screensrecoad/login.jpg"></img>
+<img align="left" src="screenshot_and_screensrecoad/1.jpg"></img>
+<img align="left" src="screenshot_and_screensrecoad/detail.jpg"></img>
+<img align="left" src="screenshot_and_screensrecoad/sort_by_date.jpg"></img>
+<img align="left" src="screenshot_and_screensrecoad/sort_by_star.jpg"></img>
+
+<img width="360px" src="https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/main/screenshot_and_screensrecoad/1.gif"  alt="Eccomerce Screenplay">;
+<img width="360px" src="https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/main/screenshot_and_screensrecoad/2.gif"  alt="Eccomerce Screenplay">;
