@@ -19,8 +19,8 @@ https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/lib/app/
 
 
 3. Fetching the repository list should be paginated by scrolling. Each time by scrolling, fetch 10 new items.
-4. 
-i think that pagination is not working so  https://api.github.com/search/repositories?q={Flutter}{&page,per_page,sort,order}
+
+i think so that pagination per page is not working  https://api.github.com/search/repositories?q={Flutter}{&page,per_page,sort,order}
 
 
 so i fetch all data and showed it by 10
@@ -135,3 +135,40 @@ used packages
  
  
 <img align="left" src="screenshot_and_screensrecoad/file__structure.jpg"></img>
+
+```
+    lib
+    ├── app
+    │   ├── data
+    │   │   └── services
+    │   │          └── local_storage.dart
+    │   ├── utils
+    │   │   └── (...)
+    │   ├── services
+    │   │   └── local_storage.dart
+    │   └── routes
+    │       ├── app_pages.dart
+    │       └── app_routes.dart
+    ├── modules
+    │   ├── home
+    │   │   ├── bindings
+    │   │   ├── components
+    │   │   ├── controllers
+    │   │   └── views
+    │   ├── login
+    │   │   ├── bindings
+    │   │   ├── components
+    │   │   ├── controllers
+    │   │   └── views
+    │   ├── splash
+    │   │   ├── bindings
+    │   │   ├── providers
+    │   │   ├── components
+    │   │   ├── controllers
+    │   │   └── views
+    │   └── app.dart
+    ├── generated_plugin_registrant.dart
+    └── main.dart
+```
+<img align="left" src="screenshot_and_screensrecoad/1.mp4"></img>
+
