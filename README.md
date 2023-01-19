@@ -3,7 +3,8 @@
 BS23 flutter task 101
 A brief description of what this project does and who it's for
 
-
+email anik@gmail.com
+password 12345
 ## Tasks
 
 1. Fetch repository list from GitHub API using "Flutter" as query keyword. (API doc)
@@ -26,3 +27,14 @@ https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/lib/app/
 https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/lib/app/modules/home/views/repo_detail_view.dart
 10. The repository list and repository details data that loaded once, should be saved for offline browsing.
 https://github.com/mosfeqanik/flutter_getx_git_repositories/blob/master/lib/app/modules/home/controllers/home_controller.dart
+11. Unit Testing coverage.
+12. Any popular State management tool such as Bloc, GetX, RxDart, etc.
+yes used Getx RxDart
+13. Dependency Injection framework.
+yes
+14. Repository pattern with an appropriate abstraction layer.
+used in common function
+15. Right now there is no need for adding auth tokens with API calls. But you can
+    implement the way to handle it for the future. Also can add some retry mechanism when
+    the API fails. 
+yes token handling is added 
