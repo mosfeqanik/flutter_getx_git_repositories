@@ -31,9 +31,11 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.logout();
+            },
             icon: const Icon(
-              Icons.notifications,
+              Icons.highlight_off_outlined,
               color: Colors.grey,
             ),
           ),

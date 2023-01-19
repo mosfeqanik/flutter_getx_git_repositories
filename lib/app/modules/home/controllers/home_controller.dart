@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_getx_git_repositories/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -20,7 +21,7 @@ class HomeController extends GetxController with CacheManager {
   var ExampleitemsListsLength = 10.obs;
   var isLoading = false.obs;
 
-  CommonFunction commonfunc =  CommonFunction();
+  CommonFunction commonfunc = CommonFunction();
   final scrollController = ScrollController();
 
   @override
@@ -37,7 +38,7 @@ class HomeController extends GetxController with CacheManager {
       }
     });
     super.onInit();
-    setUpTimedFetch();
+    // setUpTimedFetch();
   }
 
   //fetch data with pagination
@@ -51,7 +52,7 @@ class HomeController extends GetxController with CacheManager {
     Timer.periodic(Duration(milliseconds: 2000), (timer) {
       Get.find<SplashController>().isRoutetoHome.value = false;
       Get.find<SplashController>().getGitRepositories();
-      IsgetGitDataSortBy.value="";
+      IsgetGitDataSortBy.value = "";
     });
   }
 
@@ -101,5 +102,11 @@ class HomeController extends GetxController with CacheManager {
   List<Items> parseItems(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
     return parsed.map<Items>((json) => Items.fromJson(json)).toList();
+  }
+
+  //logout
+  logout() {
+    removeToken();
+    Get.toNamed(Routes.LOGIN);
   }
 }

@@ -12,10 +12,16 @@ class SplashController extends GetxController with CacheManager {
   @override
   void onInit() {
     //splash Effect with delay
-    Future.delayed(const Duration(seconds: 5), getGitRepositories);
+    Future.delayed(const Duration(seconds: 5), navigateUser);
     super.onInit();
   }
 
+  void navigateUser() async {
+    tokenAvailabilityCheck();
+    getGitRepositories();
+  }
+
+  //get git data
   getGitRepositories() async {
     isLoading.value = true;
     //get saved git api response data
@@ -25,9 +31,16 @@ class SplashController extends GetxController with CacheManager {
       final String responseBody = await provider.getGitRepositories();
       saveGitDetailsData(GitDetails: responseBody);
     }
-    if (isRoutetoHome.value) {
-      Get.offNamed(Routes.HOME);
-    }
     isLoading.value = false;
+  }
+
+  //token availability check
+  tokenAvailabilityCheck() async {
+    final token = getToken();
+    if (token != null) {
+      Get.offNamed(Routes.HOME);
+    } else {
+      Get.offNamed(Routes.LOGIN);
+    }
   }
 }
