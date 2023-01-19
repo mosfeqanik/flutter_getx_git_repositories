@@ -48,7 +48,7 @@ class HomeView extends GetView<HomeController> {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: HeadingWidget(
                 totalCount:
-                    controller.getGitRepositories.value.totalCount.toString()),
+                    controller.getGitRepositories.value.totalCount.toString()??"Saved Data"),
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
