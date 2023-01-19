@@ -147,9 +147,11 @@ class RepoDetailView extends GetView<HomeController> {
   Row repositoryIntro() {
     return Row(
       children: [
-        const Text(
-          AllStrings.RepositoryName,
-          style: ThemeTextStyles.RespositoryNameTextStyle,
+        const Flexible(
+          child: Text(
+            AllStrings.RepositoryName,
+            style: ThemeTextStyles.RespositoryNameTextStyle,
+          ),
         ),
         Text(
           "   ${items!.name}",
