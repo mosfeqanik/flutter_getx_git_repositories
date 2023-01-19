@@ -38,7 +38,7 @@ class HomeController extends GetxController with CacheManager {
       }
     });
     super.onInit();
-    // setUpTimedFetch();
+    setUpTimedFetch();
   }
 
   //fetch data with pagination
@@ -49,7 +49,7 @@ class HomeController extends GetxController with CacheManager {
   //4. The required data can be refreshed from the API no more
   // frequently than once every 30 minutes
   setUpTimedFetch() {
-    Timer.periodic(Duration(milliseconds: 2000), (timer) {
+    Timer.periodic(Duration(minutes: 20), (timer) {
       Get.find<SplashController>().isRoutetoHome.value = false;
       Get.find<SplashController>().getGitRepositories();
       IsgetGitDataSortBy.value = "";
